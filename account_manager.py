@@ -1,6 +1,6 @@
 import json
 
-accounts_file = 'accounts.json' # path to settings
+accounts_file = 'AccountData/accounts.json' # path to settings
 
 class AccountManager:
 
@@ -9,27 +9,24 @@ class AccountManager:
             self.data = json.load(json_file)
 
     def findWithPinCode(self, code):
-        for p in data['accounts']:
-            if p['pincode'] == code:
+        for account in data['accounts']:
+            if account['pincode'] == code:
+                self.current_account = account
                 return True
         
         print("WARNING: Cannot find account with pin...")
         return False
 
     def fetchBalance(self):
-        return self.balance
+        if (self.current_account):
+            return self.current_account['balance']
 
     def withdraw(self, amount):
-        self.balance -= amount
+        if (self.current_account):
+            self.current_account['balance'] -= amount
+            saveChanges()
 
     def saveChanges():
-        data = {}
-        data['accounts'] = []
-        data['accounts'].append({
-            'id': self.accountId,
-            'balance': self.balance,
-            'pincode': self.pincode
-        })
-
         with open(accounts_file, 'w') as outfile:
-            json.dump(data, outfile)
+            json.dump(self.data, outfile)
+            print("NOTIFICATION: Saved changes succesfully")
