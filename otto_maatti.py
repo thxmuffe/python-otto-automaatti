@@ -21,29 +21,37 @@ try_count = 0
 # TASK1:
 # add here logic:
 #    program should ask for pin 3 times, and quit if pin code was not correct.
-#    cosider using a while- or for-loop ... or goto??
+#    !! consider using a while- or for-loop ... or goto??
 
 # TASK2:
 # add a suitable prompt for user. (suitable prompt: sopivanlainen kehoite teksti)
 pincode = input("kerro...")
+
+# TASK3:
+# make sure pincode is of type int (integer)
 
 try_count += 1 # keep score, how many times user has tried to input PIN-code
 
 if (accounts.findWithPinCode(pincode)):
     print("PIN oikein")
 
-    # TASK3:
+    # TASK4:
     # add here a call to "fetchBalance"-method in accounts-object, which returns the account balance
     # (balance: tilillä oleva summa)
-
-    # TASK4:
-    # add here code which prints the current balance for user
+    # !! example: accounts.fetchBalance()
 
     # TASK5:
-    # ask user what to do: WITHDRAWAL or EXIT
+    # add here code which prints the current balance for user
 
     # TASK6:
+    # ask user what to do: WITHDRAWAL or EXIT
+
+    # TASK7:
     # if user choce WITHDRAWAL, ask the amount and use the "Withdraw"-method
     # in accounts-object to update the account balance.
+
 else:
-    print("lukossa...") # 3: print a clear message for user that account is now locked.
+    # TASK8: print a clear message for user that account is now locked.
+    # !! it is not really locked...
+    # BONUS: add code to account_manager.py to lock an account after too many attempts of wrong pin
+    print("lukossa...") 

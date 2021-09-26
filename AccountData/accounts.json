@@ -1,14 +1,1 @@
-{
-    "accounts": [
-        {
-            "id": "adkjahf87ry32jbf98",
-            "pincode": 1234,
-            "balance": 499.72
-        },
-        {
-            "id": "ad235hf87ry32jbf98",
-            "pincode": 4321,
-            "balance": 499.72
-        }
-    ]
-}
+{"accounts": [{"id": "adkjahf87ry32jbf98", "pincode": 1234, "balance": 299.72}, {"id": "ad235hf87ry32jbf98", "pincode": 4321, "balance": 499.72}]}

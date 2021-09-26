@@ -9,7 +9,7 @@ class AccountManager:
             self.data = json.load(json_file)
 
     def findWithPinCode(self, code):
-        for account in data['accounts']:
+        for account in self.data['accounts']:
             if account['pincode'] == code:
                 self.current_account = account
                 return True
@@ -21,12 +21,13 @@ class AccountManager:
         if (self.current_account):
             return self.current_account['balance']
 
-    def withdraw(self, amount):
-        if (self.current_account):
-            self.current_account['balance'] -= amount
-            saveChanges()
-
-    def saveChanges():
+    def saveChanges(self):
         with open(accounts_file, 'w') as outfile:
             json.dump(self.data, outfile)
             print("NOTIFICATION: Saved changes succesfully")
+
+    def withdraw(self, amount):
+        if (self.current_account):
+            self.current_account['balance'] -= amount
+            self.saveChanges()
+
